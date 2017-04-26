@@ -80,7 +80,7 @@ class TTT extends React.Component{
       currentPlayer: this.state.currentPlayer,
       ai: this.state.ai,
       board: this.state.board
-    },() => setTimeout(() => this.checkComputerTurn(movesLeft), 4000)); //use the setState callback to avoid race condition.
+    },() => setTimeout(() => this.checkComputerTurn(movesLeft), 3000)); //use the setState callback to avoid race condition.
 
     // if (this.state.ai === 1 && this.state.currentPlayer === 'X' && movesLeft > 0){this.computerTurn();}  //trigger computers turn since this must be a user turn
 
@@ -156,7 +156,7 @@ class TTT extends React.Component{
       return (
         <div className="container">
 
-            <div onClick={()=>this.computerTurn()}>Tic-Tac-Toe with React</div>
+            <div>Tic-Tac-Toe with React</div>
             <div className="board">
               {[0,1,2,3,4,5,6,7,8].map((idx) => <div onClick={() => this.select(idx)} className="cell">{this.state.board[idx]}</div>)}
             {this.state.gameOver ? <div id="startBar"><div onClick={() => this.singlePlayer()} id='singlePlayer'>Play the Computer</div><div onClick={() => this.twoPlayer()} id='twoPlayer'>2 Player</div></div> :''}
@@ -331,7 +331,7 @@ function chooseSomething(pastMoves){
   console.log("1: " + leftovers);
   leftovers = leftovers.filter(function(element,index){return (element != -1);});
   console.log("2: " + leftovers);
-  var choice = leftovers[parseInt(Math.random()*leftovers.length)];
+  var choice = leftovers[parseInt(Math.random()*leftovers.length,10)];
   console.log("choosing: " + choice);
   return choice;
 }
